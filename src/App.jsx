@@ -34,6 +34,13 @@ function App() {
     }
   }
 
+  const swap = () => {
+    setFrom(to)
+    setTo(from)
+    setConvertedAmount(amount)
+    setAmount(convertedAmount)
+  }
+
 
   useEffect(() => {
     convert();
@@ -49,7 +56,7 @@ function App() {
               e.preventDefault()
               convert()
             }}>
-              <div style={{ backgroundColor: '#c4beb4' }} className='w-full mb-1'>
+              <div className='w-full mb-1'>
                 <InputBox
                   label="Enter Amount:"
                   amount={amount}
@@ -61,6 +68,11 @@ function App() {
                   onAmountChange={handleAmountChange}
                   selectedCurrency={from}
                 />
+              </div>
+              <div className='relative w-full h-0.5'>
+                <button style={{backgroundColor: '#c4beb4'}} className='text-black absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-black rounded-md bg-blue-600 text-white px-2 py-0.5'
+                  onClick={swap}
+                  >Swap</button>
               </div>
               <div className='w-full mb-1'>
                 <InputBox
