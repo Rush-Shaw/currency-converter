@@ -23,12 +23,12 @@ function App() {
   const currencyInfo = useCurrencyInfo(from)
   const options = Object.keys(currencyInfo)
 
-  const [convertedAmount, setConvertedAmount] = useState(() => (amount * currencyInfo[to]));
+  const [convertedAmount, setConvertedAmount] = useState(() => ((amount * currencyInfo[to]).toFixed(2)));
 
 
   const convert = () => {
     if (currencyInfo[to]) {
-      setConvertedAmount(amount * currencyInfo[to]);
+      setConvertedAmount((amount * currencyInfo[to]).toFixed(2));
     } else {
       setConvertedAmount(0);
     }
