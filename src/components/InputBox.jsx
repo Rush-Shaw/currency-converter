@@ -41,10 +41,10 @@ function InputBox({
                     onChange={(e) => { onCurrencyChange && onCurrencyChange(e.target.value)}}
                     disabled={currencyDisabled}
                 >
-                    // maps over each currency option and creates an option element for each
+                    {/* Maps over each currency option and creates an option element for each. */}
                     {currencyOptions.map((currency) => (
                         <option key={currency} value={currency}>
-                            {currency} // essentialy creates the scrolldown
+                            {currency}
                         </option>
                     ))}
                 </select>
