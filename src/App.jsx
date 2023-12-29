@@ -8,9 +8,9 @@ import { useEffect } from 'react';
 
 function App() {
   document.title = "Currency Converter";
-  const [amount, setAmount] = useState("")
-  const [from, setFrom] = useState('cad')
-  const [to, setTo] = useState('usd')
+  const [amount, setAmount] = useState("");
+  const [from, setFrom] = useState('cad');
+  const [to, setTo] = useState('usd');
   const handleAmountChange = (value) => {
     // Check if the value is a valid number
     if (!isNaN(value)) {
@@ -20,27 +20,26 @@ function App() {
         setAmount(""); // Setting to an empty string or a default value
     }
 }
-  const currencyInfo = useCurrencyInfo(from)
-  const options = Object.keys(currencyInfo)
+  const currencyInfo = useCurrencyInfo(from);
+  const options = Object.keys(currencyInfo);
 
   const [convertedAmount, setConvertedAmount] = useState(() => ((amount * currencyInfo[to]).toFixed(2)));
 
+  const swap = () => {
+    // Swap currencies
+    setFrom(to);
+    setTo(from);
+
+    // Update amount based on the current value of convertedAmount
+    setAmount(convertedAmount);
+
+    // Recalculate and set the convertedAmount based on the new 'amount' and 'to' currency
+    setConvertedAmount((convertedAmount * currencyInfo[from]).toFixed(2)); 
+}
 
   const convert = () => {
-    if (currencyInfo[to]) {
-      setConvertedAmount((amount * currencyInfo[to]).toFixed(2));
-    } else {
-      setConvertedAmount(0);
-    }
+     setConvertedAmount((amount * currencyInfo[to]).toFixed(2));
   }
-
-  const swap = () => {
-    setFrom(to)
-    setTo(from)
-    setConvertedAmount(amount)
-    setAmount(convertedAmount)
-  }
-
 
   useEffect(() => {
     convert();
@@ -63,14 +62,14 @@ function App() {
                   currencyOptions={options}
                   onCurrencyChange={(currency) => {
                       setFrom(currency);
-                      setConvertedAmount(0); // Reset convertedAmount when currency changes
+                      //setConvertedAmount(0); // Reset convertedAmount when currency changes
                   }}
                   onAmountChange={handleAmountChange}
                   selectedCurrency={from}
                 />
               </div>
               <div className='relative w-full h-0.5'>
-                <button style={{backgroundColor: '#c4beb4'}} className='text-black absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-black rounded-md bg-blue-600 text-white px-2 py-0.5'
+                <button style={{backgroundColor: '#c4beb4'}} className='text-black absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-black rounded-md bg-blue-600 px-2 py-0.5'
                   onClick={swap}
                   >Swap</button>
               </div>
@@ -81,7 +80,6 @@ function App() {
                   amount={convertedAmount}
                   onCurrencyChange={(currency) => {
                     setTo(currency); 
-                    setConvertedAmount(0); // Reset convertedAmount when currency changes
                   }}
                   selectedCurrency={to}
                   amountDisabled
