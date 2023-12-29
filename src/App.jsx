@@ -75,12 +75,12 @@ function App() {
                 />
               </div>
               <div className='relative w-full h-0.5'>
-                // button to swap the currencies around
+                {/* button to swap the currencies around */}
                 <button style={{backgroundColor: '#c4beb4'}} className='text-black absolute left-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-black rounded-md bg-blue-600 px-2 py-0.5'
                   onClick={swap}
                   >Swap</button>
               </div>
-              // second input box where the converted currency will be displayed
+              {/* second input box where the converted currency will be displayed*/}
               <div className='w-full mb-1'>
                 <InputBox
                   label="Conversion:"
