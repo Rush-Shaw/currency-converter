@@ -1,7 +1,7 @@
 import React, {useId} from "react"
 
 function InputBox({
-
+// default values and names for various components in the input box
     label, 
     amount,
     onAmountChange,
@@ -13,7 +13,7 @@ function InputBox({
     className = ""
 })  {
 
-    const id = useId()
+    const id = useId() // generates a unique id for the id inside the div, better accessibility
 
     return (
         <div style={{ backgroundColor: "#282c34" }} className={`big-white p-3 rounded-lg text-sm flex ${className}`}>
@@ -41,9 +41,10 @@ function InputBox({
                     onChange={(e) => { onCurrencyChange && onCurrencyChange(e.target.value)}}
                     disabled={currencyDisabled}
                 >
+                    // maps over each currency option and creates an option element for each
                     {currencyOptions.map((currency) => (
                         <option key={currency} value={currency}>
-                            {currency}
+                            {currency} // essentialy creates the scrolldown
                         </option>
                     ))}
                 </select>
