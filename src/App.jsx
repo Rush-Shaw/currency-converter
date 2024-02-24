@@ -5,7 +5,7 @@ import './App.css'
 import useCurrencyInfo from './hooks/useCurrencyInfo'
 import {InputBox} from './components/index.js'
 import { useEffect } from 'react';
-import backgroundImg from '../assets/currencyconverterbackground.jpg';
+import backgroundImage from './assets/currencyconverterbackground.jpg';
 
 // where the bulk of it will be built
 function App() {
@@ -55,7 +55,9 @@ function App() {
     // main div for the whole application
     <div className ='w-full h-screen flex flex-wrap justify-center items-center bg-cover' 
     // background image for the app
-    style={{backgroundColor: '#c4beb4', backgroundImage: `url(${backgroundImg})`, backgroundSize: '115%',}}>
+    style={{backgroundColor: '#c4beb4', 
+            backgroundImage: `url(${backgroundImage})`, 
+            backgroundSize: '115%',}}>
         <div className='w-full'>
           <div className = 'w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30'>
             <form onSubmit={(e) => { // triggers convert function
