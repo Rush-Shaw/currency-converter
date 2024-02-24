@@ -5,6 +5,7 @@ import './App.css'
 import useCurrencyInfo from './hooks/useCurrencyInfo'
 import {InputBox} from './components/index.js'
 import { useEffect } from 'react';
+import backgroundImg from '../assets/currencyconverterbackground.jpg';
 
 // where the bulk of it will be built
 function App() {
@@ -54,7 +55,7 @@ function App() {
     // main div for the whole application
     <div className ='w-full h-screen flex flex-wrap justify-center items-center bg-cover' 
     // background image for the app
-    style={{backgroundColor: '#c4beb4', backgroundImage: `url(https://media.discordapp.net/attachments/765363966619680790/1190036432560062525/curbkgblack.jpg?ex=65a056cb&is=658de1cb&hm=f32b0aa351dcb4e5a0d3ea97e68c3132a8c470a5206c3f734820d43880bf2281&=&format=webp&width=1258&height=1258)`, backgroundSize: '115%',}}>
+    style={{backgroundColor: '#c4beb4', backgroundImage: `url(${backgroundImg})`, backgroundSize: '115%',}}>
         <div className='w-full'>
           <div className = 'w-full max-w-md mx-auto border border-gray-60 rounded-lg p-5 backdrop-blur-sm bg-white/30'>
             <form onSubmit={(e) => { // triggers convert function
